@@ -35,6 +35,22 @@ main {
     font-size: 48px;
     line-height: 58px;
     color: #BA4431;
+    animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+    0% {
+
+    }
+
+    50% {
+        text-shadow: 0px 0px 6px #FF2300;
+    }
+
+    100% {
+
+    }
 
 }
 .subtitle {
@@ -47,7 +63,38 @@ main {
     height: 40px;
 }
 .proffile-link {
+    margin-bottom: 30px;
 }
 .kata-link {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #E5E5E5;
+    filter: blur(1.5px);
+    transition: 200ms;
+
 }
 
+.codewars-link {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #BA4431;
+    filter: blur(1px);
+    transition: 200ms;
+}
+
+.kata-link:hover {
+    filter: none;
+    transition: 200ms;
+
+}
+
+.codewars-link:hover {
+    filter: none;
+    transition: 200ms;
+}

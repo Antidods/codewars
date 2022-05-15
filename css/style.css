@@ -121,6 +121,28 @@ main {
   font-size: 48px;
   line-height: 58px;
   color: #BA4431;
+  -webkit-animation: pulse 2s infinite;
+          animation: pulse 2s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+  }
+  50% {
+    text-shadow: 0px 0px 6px #FF2300;
+  }
+  100% {
+  }
+}
+
+@keyframes pulse {
+  0% {
+  }
+  50% {
+    text-shadow: 0px 0px 6px #FF2300;
+  }
+  100% {
+  }
 }
 
 .subtitle {
@@ -131,4 +153,48 @@ main {
   line-height: 24px;
   color: #E5E5E5;
   height: 40px;
+}
+
+.proffile-link {
+  margin-bottom: 30px;
+}
+
+.kata-link {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #E5E5E5;
+  -webkit-filter: blur(1.5px);
+          filter: blur(1.5px);
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.codewars-link {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #BA4431;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.kata-link:hover {
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.codewars-link:hover {
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: 200ms;
+  transition: 200ms;
 }
