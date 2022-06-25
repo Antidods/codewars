@@ -59,7 +59,6 @@ function decodeRailFenceCipher(string, numberRails) {
          direction = true;
       }
    }
-   console.log(obj);
 
    step = 0;
 
