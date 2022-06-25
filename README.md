@@ -1,3 +1,5 @@
 ![codewars](https://www.codewars.com/users/A_Streltsov/badges/large)
 
-[!CAUTION](Negative potential consequences of an action.)
+[Мой профиль на codewars](https://www.codewars.com/users/A_Streltsov)
+
+Я заранее извиняюсь за низкую читаемость кода))
