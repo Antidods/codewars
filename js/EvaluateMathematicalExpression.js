@@ -30,12 +30,16 @@ function calc(expression) {
       symbol == "7" ||
       symbol == "8" ||
       symbol == "9" ||
-      symbol == "0"
+      symbol == "0" ||
+      symbol == "."
     ) {
       tempNum += symbol;
-      if (i === expression.length - 1) inArray.push(symbol);
+      if (i === expression.length - 1) {
+        inArray.push(tempNum);
+      }
     }
   }
+  
 
   function calcTwo(first, operator, last) {
     let result;
@@ -62,7 +66,29 @@ function calc(expression) {
     return result;
   }
 
-  return calcTwo(inArray[0], inArray[1], inArray[2]);
+  function calcMany(array) {
+    for (let i = 1; i < array.length; i++) {
+      if (array.length < 2) break;
+      if (array[i] === "*" || array[i] === "/") {
+        array.splice([i - 1], 3, calcTwo(array[i - 1], array[i], array[i + 1]));
+        i--;
+      }
+      if (array.length < 2) return array[0];
+    }
+
+    for (let i = 1; i < array.length; i++) {
+      if (array.length < 2) break;
+      if (array[i] === "+" || array[i] === "-") {
+        array.splice([i - 1], 3, calcTwo(array[i - 1], array[i], array[i + 1]));
+        i--;
+      }
+      if (array.length < 2) return array[0];
+    }
+
+    return array;
+  }
+
+  return calcMany(inArray);
 }
 
-calc("6+3+756/3");
+console.log(calc("5.4599886 / 5611116"));
