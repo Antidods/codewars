@@ -33,8 +33,8 @@ describe("С плавающей точкой", () => {
   it(`values: "5.456+56"`, () => assert.strictEqual(calc("5.456+56"), 61.456));
   it(`values: "7.33 * 1.2"`, () =>
     assert.strictEqual(calc("7.33 * 1.2"), 8.796));
-  it(`values: "1.333333*3.269"`, () =>
-    assert.strictEqual(calc("1.333333*3.269"), 4.358665577));
+  it(`values: "1.354*3.269"`, () =>
+    assert.strictEqual(calc("1.354*3.269"), 4.426226));
 });
 
 describe("Codewars tests", () => {

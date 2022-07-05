@@ -6,6 +6,11 @@ function calc(expression) {
 
   for (let i = 0; i < expression.length; i++) {
     const symbol = expression[i];
+    if (symbol === ",") symbol = ".";
+    if (expression[0] === "-") {
+      tempNum += expression[0];
+      continue;
+    }
 
     if (
       symbol == "(" ||
@@ -16,7 +21,7 @@ function calc(expression) {
       symbol == "/"
     ) {
       if (tempNum) {
-        inArray.push(tempNum);
+        inArray.push(Number(tempNum));
         tempNum = "";
       }
       inArray.push(symbol);
@@ -35,11 +40,11 @@ function calc(expression) {
     ) {
       tempNum += symbol;
       if (i === expression.length - 1) {
-        inArray.push(tempNum);
+        inArray.push(Number(tempNum));
       }
     }
   }
-  
+  if (inArray.length === 1) return Number(inArray[0]);
 
   function calcTwo(first, operator, last) {
     let result;
@@ -85,10 +90,9 @@ function calc(expression) {
       if (array.length < 2) return array[0];
     }
 
-    return array;
+    return Number(array);
   }
 
   return calcMany(inArray);
 }
 
-console.log(calc("5.4599886 / 5611116"));
