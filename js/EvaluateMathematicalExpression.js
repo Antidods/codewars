@@ -5,12 +5,15 @@ function calc(expression) {
   let tempNum = "";
 
   for (let i = 0; i < expression.length; i++) {
-    const symbol = expression[i];
+    console.log(inArray);
+    let symbol = expression[i];
     if (symbol === ",") symbol = ".";
-    if (expression[0] === "-") {
-      tempNum += expression[0];
+    if (symbol === "-" && i === 0) {
+      tempNum += symbol;
       continue;
     }
+
+    if (symbol === " ") continue;
 
     if (
       symbol == "(" ||
@@ -44,6 +47,7 @@ function calc(expression) {
       }
     }
   }
+
   if (inArray.length === 1) return Number(inArray[0]);
 
   function calcTwo(first, operator, last) {
@@ -93,6 +97,37 @@ function calc(expression) {
     return Number(array);
   }
 
+  console.log(inArray);
+
+  console.log(inArray.indexOf("("));
+
+  let firstBracket = -1;
+  let lastBracket = -1;
+  x = 5;
+
+  while (x > 0) {
+    //inArray.indexOf("(") > -1
+
+    firstBracket = -1;
+    lastBracket = -1;
+
+    for (let i = 0; i < inArray.length; i++) {
+      const element = inArray[i];
+      if (element === "(") firstBracket = i;
+      if (element === ")") {
+        lastBracket = i;
+        break;
+      }
+    }
+
+    if (firstBracket > -1 && lastBracket > -1) {
+      const promResult = calcMany(inArray.slice(firstBracket + 1, lastBracket));
+      inArray.splice(firstBracket, lastBracket - firstBracket - 1, promResult);
+    }
+    x--;
+  }
+
   return calcMany(inArray);
 }
 
+calc("5+(5-5)*1");
