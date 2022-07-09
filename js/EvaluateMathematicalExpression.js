@@ -27,11 +27,11 @@ function calc(expression) {
 
          if (
             (symbol == "-" && inArray.at(-1) === "(") ||
-            inArray.at(-1) === ")" ||
-            inArray.at(-1) === "+" ||
-            inArray.at(-1) === "-" ||
-            inArray.at(-1) === "*" ||
-            inArray.at(-1) === "/"
+            (symbol == "-" && inArray.at(-1) === ")") ||
+            (symbol == "-" && inArray.at(-1) === "+") ||
+            (symbol == "-" && inArray.at(-1) === "-") ||
+            (symbol == "-" && inArray.at(-1) === "*") ||
+            (symbol == "-" && inArray.at(-1) === "/")
          ) {
             tempNum += symbol;
             continue;
@@ -121,14 +121,13 @@ function calc(expression) {
 
    let firstBracket = -1;
    let lastBracket = -1;
-   x = 5;
+   let x = 10;
 
-   while (x > 0) {
-      //inArray.indexOf("(") > -1
-
+   while (inArray.indexOf("(") > -1 && x) {
+      x--;
       firstBracket = -1;
       lastBracket = -1;
-
+      console.log("положение скобок", firstBracket, lastBracket);
       for (let i = 0; i < inArray.length; i++) {
          const element = inArray[i];
          if (element === "(") firstBracket = i;
@@ -137,6 +136,7 @@ function calc(expression) {
             break;
          }
       }
+      console.log("положение скобок", firstBracket, lastBracket);
 
       if (firstBracket > -1 && lastBracket > -1) {
          const promResult = calcMany(
@@ -148,10 +148,11 @@ function calc(expression) {
             promResult
          );
       }
+      console.log(inArray);
       x--;
    }
 
    return calcMany(inArray);
 }
 
-calc("2/-2+   -3 *    4.75- -6");
+calc("2 / ( 2 + 3) * 4.33 - -6");
