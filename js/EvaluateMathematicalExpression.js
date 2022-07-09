@@ -1,9 +1,16 @@
 //https://www.codewars.com/kata/52a78825cdfc2cfc87000005
 
-let calc = (expression) => {
-  let inArray = [];
-  let tempNum = "";
+//https://github.com/Antidods/codewars
 
+let calc = (expression) => {
+  let inArray = []; // string "expression" to array
+  let tempNum = ""; // variable for combining individual characters into numbers
+
+  //  two variables for the position of the opening and closing brackets
+  let firstBracket = -1;
+  let lastBracket = -1;
+
+  // transform a string into an array
   for (let i = 0; i < expression.length; i++) {
     let symbol = expression[i];
     if (symbol === ",") symbol = ".";
@@ -60,8 +67,7 @@ let calc = (expression) => {
 
   if (inArray.length === 1) return Number(inArray[0]);
 
-  console.log("Входной массив", inArray);
-
+  //the function calculates values for two arguments
   function calcTwo(first, operator, last) {
     let result;
     switch (operator) {
@@ -87,6 +93,7 @@ let calc = (expression) => {
     return result;
   }
 
+  //the function calculates for multiple arguments
   function calcMany(array) {
     if (array.length < 2) return Number(array);
 
@@ -111,12 +118,11 @@ let calc = (expression) => {
     }
   }
 
-  let firstBracket = -1;
-  let lastBracket = -1;
-
+  // the loop goes through the array, finds the brackets and calculates the values inside the brackets
   while (inArray.indexOf("(") > -1) {
     firstBracket = -1;
     lastBracket = -1;
+
     for (let i = 0; i < inArray.length; i++) {
       const element = inArray[i];
       if (element === "(") firstBracket = i;
@@ -131,8 +137,8 @@ let calc = (expression) => {
       inArray.splice(firstBracket, lastBracket - firstBracket + 1, promResult);
     }
   }
-  console.log("Массив после удаления скобок", inArray);
 
+  //the loop goes through the array, looks for the "-" signs and makes the numbers negative, where it is needed
   for (let i = 0; i < inArray.length; i++) {
     if (i === 0 && inArray[i] === "-") inArray[i] = Number(inArray[i]) * -1;
     if (
@@ -147,8 +153,6 @@ let calc = (expression) => {
       inArray.splice(i + 1, 1);
     }
   }
-  console.log(inArray);
+
   return calcMany(inArray);
 };
-
-calc("(1 - 2) + -(-(-(-4)))");
